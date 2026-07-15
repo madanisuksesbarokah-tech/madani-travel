@@ -964,6 +964,8 @@ document.getElementById("whyGrid").innerHTML = whyData.map(w=>`
     <h3>${w.title}</h3><p>${w.text}</p>
   </div>`).join("");
 
+  lucide.createIcons();
+
 const pkgCats = ["Semua","Malaysia","Singapore","Combo","Thailand"];
 let activeCat = "Semua";
 const pkgTabsEl = document.getElementById("pkgTabs");
