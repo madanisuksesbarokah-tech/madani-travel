@@ -956,7 +956,7 @@ const faqData = [
 ];
 
 /* ===================== RENDER ===================== */
-const iconify = (cls)=>`<i class="${cls}"></i>`;
+const iconify = (cls) => `<i data-lucide="${cls.replace('lucide-', '')}"></i>`;
 
 document.getElementById("whyGrid").innerHTML = whyData.map(w=>`
   <div class="why-card reveal">
