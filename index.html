@@ -1209,5 +1209,34 @@ document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
 <script>lucide.createIcons();</script>
+const heroSlides = document.querySelectorAll(".hero-slide");
+const heroLocation = document.getElementById("heroLocation");
+
+const heroLocations = [
+  "Putrajaya, Malaysia",
+  "Gardens by The Bay, Singapore",
+  "Istana Negara, Malaysia",
+  "Universiti Teknologi Malaysia"
+];
+
+let heroIndex = 0;
+
+setInterval(() => {
+
+  heroSlides[heroIndex].classList.remove("active");
+
+  heroIndex++;
+
+  if(heroIndex >= heroSlides.length){
+    heroIndex = 0;
+  }
+
+  heroSlides[heroIndex].classList.add("active");
+
+  if(heroLocation){
+    heroLocation.textContent = heroLocations[heroIndex];
+  }
+
+}, 5000);
 </body>
 </html>
