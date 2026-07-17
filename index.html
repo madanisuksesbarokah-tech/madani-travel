@@ -1252,6 +1252,26 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// Hero slider
+const heroSlides=document.querySelectorAll('.hero-slide');
+const heroLocation=document.getElementById('heroLocation');
+if(heroSlides.length){
+ const heroLocations=[
+ 'Putrajaya, Malaysia',
+ 'Gardens by The Bay, Singapore',
+ 'Istana Negara, Malaysia',
+ 'Universiti Teknologi Malaysia'
+ ];
+ let i=0;
+ setInterval(()=>{
+  heroSlides[i].classList.remove('active');
+  i=(i+1)%heroSlides.length;
+  heroSlides[i].classList.add('active');
+  if(heroLocation) heroLocation.textContent=heroLocations[i];
+ },6000);
+}
+
 </script>
 
 <script>lucide.createIcons();</script>
