@@ -172,64 +172,185 @@ section{padding:96px 0;position:relative;}
   position:relative;
   min-height:100vh;
   overflow:hidden;
+  display:flex;
+  align-items:center;
 }
+
 
 .hero-bg{
   position:absolute;
   inset:0;
 }
 
+
 .hero-slide{
+
   position:absolute;
   inset:0;
+
   width:100%;
   height:100%;
+
   object-fit:cover;
+  object-position:center;
 
   opacity:0;
-  transition:opacity 1s ease;
+  transform:scale(1.08);
+
+  transition:
+  opacity 1.5s ease,
+  transform 8s ease;
+
 }
+
 
 .hero-slide.active{
+
   opacity:1;
+  transform:scale(1);
+
 }
+
+
 
 .hero-overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.35);
-}
-}
-.hero-arch{
-  position:absolute;bottom:0;left:0;right:0;height:70px;z-index:1;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='70' viewBox='0 0 120 70'%3E%3Cpath d='M0 70 L0 40 Q30 0 60 40 Q90 0 120 40 L120 70 Z' fill='%23F8F8F8'/%3E%3C/svg%3E");
-  background-repeat:repeat-x;background-size:120px 70px;opacity:.06;
-}
-.hero-content{position:relative;z-index:2;padding-bottom:min(11vh,110px);width:100%;}
-.hero-text{max-width:760px;}
-.eyebrow-light{color:var(--gold-light);}
-.eyebrow-light::before{background:var(--gold-light);}
-.hero h1{color:#fff;font-size:clamp(2.1rem,4.6vw,3.6rem);margin-top:18px;letter-spacing:-.01em;}
-.hero-sub{color:rgba(255,255,255,.86);font-size:1.08rem;max-width:640px;margin-top:20px;}
-.hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px;}
-.hero-checks{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:38px;padding-top:30px;border-top:1px solid rgba(255,255,255,.18);}
-.hero-checks li{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.9);font-size:.86rem;font-weight:500;}
-.hero-checks i{color:var(--gold-light);font-size:1rem;}
-.hero-scroll{position:absolute;right:36px;bottom:36px;z-index:2;width:30px;height:48px;border:1.5px solid rgba(255,255,255,.5);border-radius:20px;display:flex;justify-content:center;padding-top:8px;}
-.hero-scroll span{width:4px;height:8px;background:var(--gold-light);border-radius:3px;animation:scrollDot 1.8s infinite;}
-@keyframes scrollDot{0%{opacity:1;transform:translateY(0);}70%{opacity:0;transform:translateY(14px);}100%{opacity:0;}}
 
-@media(max-width:860px){
-  .nav-cta{display:none;}
-  .nav-burger{display:flex;z-index:2;}
-  .hero-content{padding-bottom:80px;}
-  .nav-links{
-    position:fixed;top:0;right:0;height:100vh;width:78vw;max-width:320px;
-    background:#151310;flex-direction:column;justify-content:center;align-items:flex-start;gap:26px;
-    padding:40px;transform:translateX(100%);transition:transform .4s ease;
-  }
-  .nav-links.mobile-open{transform:translateX(0);}
-  .nav-links a{font-size:1.05rem;}
+ position:absolute;
+ inset:0;
+
+ background:
+ linear-gradient(
+ rgba(0,0,0,.45),
+ rgba(0,0,0,.65)
+ );
+
+ z-index:1;
+
+}
+
+
+
+.hero-content{
+
+ position:relative;
+
+ z-index:2;
+
+ max-width:800px;
+
+ padding:0 8%;
+
+ color:white;
+
+}
+
+
+
+.hero-content h1{
+
+ font-size:clamp(36px,5vw,64px);
+
+ line-height:1.15;
+
+ font-weight:800;
+
+ margin-bottom:20px;
+
+}
+
+
+
+.hero-content p{
+
+ font-size:20px;
+
+ max-width:600px;
+
+ line-height:1.6;
+
+ margin-bottom:35px;
+
+}
+
+
+
+.hero-btn{
+
+ display:inline-block;
+
+ background:#0b8f4d;
+
+ color:white;
+
+ padding:15px 32px;
+
+ border-radius:50px;
+
+ text-decoration:none;
+
+ font-weight:700;
+
+}
+
+
+
+.hero-location{
+
+ position:absolute;
+
+ bottom:40px;
+
+ left:8%;
+
+ z-index:3;
+
+ color:white;
+
+ font-size:16px;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero{
+
+ min-height:90vh;
+
+}
+
+
+.hero-content{
+
+ padding:0 25px;
+
+}
+
+
+.hero-content h1{
+
+ font-size:36px;
+
+}
+
+
+.hero-content p{
+
+ font-size:16px;
+
+}
+
+
+.hero-location{
+
+ left:25px;
+
+ bottom:25px;
+
+}
+
 }
 
 /* ---------- Trust stats ---------- */
@@ -558,60 +679,65 @@ section{padding:96px 0;position:relative;}
 </header>
 
 <!-- ============ HERO ============ -->
-<section class="hero">
-  <img 
-    src="assets/rombongan-putrajaya.png"
-    style="width:100%;height:500px;object-fit:cover;"
-  >
-</section>
-    
+<section class="hero" id="top">
 
-  <img class="hero-slide active"
-       src="assets/rombongan-putrajaya.png"
-       alt="Rombongan EduTrip Madani Travel di Putrajaya Malaysia"
-       fetchpriority="high">
+  <!-- BACKGROUND SLIDER -->
+  <div class="hero-bg">
 
-  <img class="hero-slide"
-       src="assets/gardens-by the bay1.jpeg"
-       alt="Gardens by The Bay Singapore">
+    <img class="hero-slide active"
+      src="assets/rombongan-putrajaya.png"
+      alt="Rombongan EduTrip Madani Travel di Putrajaya Malaysia">
 
-  <img class="hero-slide"
-       src="assets/home.jpeg"
-       alt="Istana Negara Malaysia">
+    <img class="hero-slide"
+      src="assets/gardens-by the bay1.jpeg"
+      alt="Gardens by The Bay Singapore">
 
-  <img class="hero-slide"
-       src="assets/utm.jpeg"
-       alt="Universitas Teknologi Malaysia">
+    <img class="hero-slide"
+      src="assets/home.jpeg"
+      alt="Istana Negara Malaysia">
 
+    <img class="hero-slide"
+      src="assets/utm.jpeg"
+      alt="Universiti Teknologi Malaysia">
+
+  </div>
+
+
+  <!-- DARK OVERLAY -->
   <div class="hero-overlay"></div>
 
-  <div class="hero-location">
-    <i class="lucide-map-pin"></i>
-    <span id="heroLocation">Putrajaya, Malaysia</span>
+
+  <!-- HERO CONTENT -->
+  <div class="hero-content">
+
+    <h1>
+      Land Tour Operator<br>
+      Malaysia • Singapore • Thailand
+    </h1>
+
+    <p>
+      Partner terpercaya untuk kebutuhan EduTrip,
+      Halal Tour, dan Group Arrangement Asia.
+    </p>
+
+
+    <a href="https://wa.me/62895324843464"
+       class="hero-btn">
+       Konsultasi Sekarang
+    </a>
+
   </div>
 
-</div>
-  <div class="hero-arch" aria-hidden="true"></div>
-  <div class="wrap hero-content">
-    <div class="hero-text reveal">
-      <span class="eyebrow eyebrow-light">Land Tour Operator · Malaysia — Singapore — Thailand</span>
-      <h1>Solusi B2B untuk Travel Agent, Sekolah, Kampus &amp; Komunitas</h1>
-      <p class="hero-sub">Kami membantu Travel Agent menghadirkan EduTrip dan Halal Tour berkualitas dengan harga kompetitif, itinerary fleksibel, hotel terbaik, transportasi nyaman, dan tim operasional profesional — dari konsultasi pertama hingga rombongan pulang dengan selamat.</p>
-      <div class="hero-cta">
-        <a href="https://wa.me/62895324843464?text=Halo%20Madani%20Travel%2C%20saya%20ingin%20request%20pricelist" class="btn btn-gold" target="_blank" rel="noopener"><i class="lucide-file-text"></i> Request Pricelist</a>
-        <a href="https://wa.me/62895324843464?text=Halo%20Madani%20Travel%2C%20saya%20ingin%20minta%20quotation" class="btn btn-outline" target="_blank" rel="noopener"><i class="lucide-send"></i> Minta Quotation</a>
-      </div>
-      <ul class="hero-checks">
-        <li><i class="lucide-check"></i> Land Arrangement</li>
-        <li><i class="lucide-check"></i> Muslim Friendly</li>
-        <li><i class="lucide-check"></i> Hotel Terbaik</li>
-        <li><i class="lucide-check"></i> Private Bus</li>
-        <li><i class="lucide-check"></i> Professional Guide</li>
-        <li><i class="lucide-check"></i> Fast Response</li>
-      </ul>
-    </div>
+
+  <!-- LOCATION -->
+  <div class="hero-location">
+    <span>📍</span>
+    <span id="heroLocation">
+      Putrajaya, Malaysia
+    </span>
   </div>
-  <a href="#trust" class="hero-scroll" aria-label="Gulir ke bawah"><span></span></a>
+
+
 </section>
 
 <!-- ============ TRUST STATS ============ -->
@@ -1197,18 +1323,36 @@ function tickCountdown(){
 }
 tickCountdown(); setInterval(tickCountdown,1000);
 
-// Contact form -> WhatsApp
+<script>
+/* Contact form -> WhatsApp */
 document.getElementById("contactForm").addEventListener("submit", function(e){
   e.preventDefault();
+
   const f = new FormData(this);
-  const msg = `Halo Madani Travel, saya ${f.get("name")} dari ${f.get("company")||"-"}.\nNo. WA: ${f.get("phone")}\nDestinasi diminati: ${f.get("destination")}\nPesan: ${f.get("message")||"-"}`;
+
+  const msg = `Halo Madani Travel, saya ${f.get("name")} dari ${f.get("company")||"-"}.
+No. WA: ${f.get("phone")}
+Destinasi diminati: ${f.get("destination")}
+Pesan: ${f.get("message")||"-"}`;
+
   window.open(waLink(msg), "_blank");
 });
 
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
 
-<script>lucide.createIcons();</script>
+/* Tahun footer otomatis */
+document.getElementById("year").textContent = new Date().getFullYear();
+
+
+
+/* Lucide Icon */
+lucide.createIcons();
+
+
+
+/* =========================
+   HERO AUTO SLIDER
+========================= */
+
 const heroSlides = document.querySelectorAll(".hero-slide");
 const heroLocation = document.getElementById("heroLocation");
 
@@ -1219,24 +1363,39 @@ const heroLocations = [
   "Universiti Teknologi Malaysia"
 ];
 
+
 let heroIndex = 0;
+
 
 setInterval(() => {
 
+  // hapus gambar aktif
   heroSlides[heroIndex].classList.remove("active");
 
+
+  // pindah ke gambar berikutnya
   heroIndex++;
 
+
+  // kembali ke awal
   if(heroIndex >= heroSlides.length){
     heroIndex = 0;
   }
 
+
+  // tampilkan gambar baru
   heroSlides[heroIndex].classList.add("active");
 
+
+  // update lokasi
   if(heroLocation){
     heroLocation.textContent = heroLocations[heroIndex];
   }
 
-}, 5000);
+
+},5000);
+
+</script>
+
 </body>
 </html>
